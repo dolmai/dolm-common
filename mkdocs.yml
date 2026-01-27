@@ -1,0 +1,18 @@
+site_name: DOLM Documentation
+site_url: https://dolmai.github.io/dolm-common/
+repo_url: https://github.com/dolmai/dolm-common
+repo_name: dolmai/dolm-common
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+
+nav:
+  - Home: index.md
