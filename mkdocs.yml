@@ -8,6 +8,51 @@ theme:
   features:
     - navigation.sections
     - content.code.copy
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - toc.integrate
+    - content.action.edit
+    - content.action.view
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: custom
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: custom
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Poppins
+
+copyright: DOLM AI 2026
+extra:
+  social:
+    - icon: material/email-outline
+      link: 
+      name: Contact us
+    - icon: material/web
+      link: 
+      name: DOLM AI
+    - icon: fontawesome/brands/github
+      link: https://github.com/dolmai
+      name: GitHub
+
+
+extra_css:
+  - assets/extra.css
+
 
 plugins:
   - search
@@ -15,4 +60,13 @@ plugins:
       default_handler: python
 
 nav:
-  - Home: index.md
+  - "Home": index.md
+  - "Quickstart": examples/index.md
+  - "Usage":
+    - usage/index.md
+    - "Install": usage/install.md
+    - "Requests": usage/requests.md
+    - "Tools": usage/tools.md
+    - "Images": usage/images.md
+    - "REST API (experimental)": usage/experimental.md
+  - "Code reference": code_reference/index.md
