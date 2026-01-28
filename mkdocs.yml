@@ -1,7 +1,7 @@
 site_name: DOLM Documentation
-site_url: https://dolmai.github.io/dolm-common/
-repo_url: https://github.com/dolmai/dolm-common
-repo_name: dolmai/dolm-common
+site_url: https://pcp-dolm.github.io/dolm-common/
+repo_url: https://github.com/pcp-dolm/dolm-common
+repo_name: pcp-dolm/dolm-common
 
 theme:
   name: material
@@ -46,7 +46,7 @@ extra:
       link: 
       name: DOLM AI
     - icon: fontawesome/brands/github
-      link: https://github.com/dolmai
+      link: https://github.com/pcp-dolm/dolm-common
       name: GitHub
 
 
