@@ -1,0 +1,56 @@
+name: Dolm CI 
+
+on:
+  push:
+    branches:
+      - develop
+      - feat/documentation-github-pages
+
+permissions:
+  contents: write
+
+jobs:
+  deploy_docs:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.8' 
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      # --- THE FIX ---
+      - name: Fix Source and Lock
+        run: |
+          # 1. Delete the lock file (platform mismatch)
+          rm poetry.lock
+          # 2. Remove the PyTorch source config so we use standard PyPI
+          # This fixes the "markupsafe" error
+          poetry source remove pytorch || true
+      # ---------------
+
+      - name: Install Project Dependencies
+        run: poetry install --no-interaction --no-root
+
+      - name: Install Docs Tools (Manual)
+        run: poetry run pip install mkdocs mkdocs-material "mkdocstrings[python]"
+
+      - name: Publish documentation website
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
+          poetry run mkdocs gh-deploy --force
+        
